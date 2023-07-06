@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/resources :: head(pageTitle='Photo Details')">
+</head>
+<body>
+<nav th:replace="~{/fragments/navbar :: navbar(current='photos')}"></nav>
+<div class="container" th:object="${photo}">
+    <section>
+        <div class="row">
+            <h1 class="my-3 text-center" th:text="*{title}"></h1>
+
+            <dl class="col-6">
+
+                <dt>Title</dt>
+                <dd th:text="*{title}"></dd>
+
+
+                <dt>Description</dt>
+                <dd th:text="*{description}"></dd>
+
+                <dt>Url</dt>
+                <dd th:text="*{url} +' €'"></dd>
+
+                <dt>Visible</dt>
+                <dd th:text="*{visible}"></dd>
+
+                <!--                <dt>Created at</dt>-->
+                <!--                <dd th:text=" *{#temporals.format(createdAt, 'dd-MM-yyyy hh:mm')}"></dd>-->
+
+            </dl>
+            <div class="col-6">
+                <img th:src="*{url}" class=" rounded rounded-3 card-img-top my-img" alt="...">
+            </div>
+        </div>
+
+        <!--        <div class="col-4">-->
+        <!--            <h3>Ingredients</h3>-->
+        <!--            <ul th:if="*{ingredients.size() > 0}">-->
+        <!--                <li th:each="ingredient : *{ingredients}" th:text="${ingredient.name}"></li>-->
+        <!--            </ul>-->
+        <!--            <div th:unless="*{ingredients.size() > 0}" class="alert alert-info">No ingredients</div>-->
+        <!--        </div>-->
+    </section>
+</div>
+</body>
+</html>

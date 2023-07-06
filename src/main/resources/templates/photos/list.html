@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/resources :: head(pageTitle='Photos List')">
+</head>
+<body>
+<nav th:replace="~{/fragments/navbar :: navbar(current='photos')}"></nav>
+<h1>Photo List</h1>
+<div class="container">
+
+    <table class="table" th:if="${photoList.size()>0}">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Url</th>
+            <th scope="col">Visible</th>
+
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="photo : ${photoList}">
+            <td th:text="${photo.id}"></td>
+            <td th:text="${photo.title}"></td>
+            <td th:text="${photo.description}"></td>
+            <td th:text="${photo.url} "></td>
+            <td th:text="${photo.visible} "></td>
+            <td>
+                <div class="d-flex align-items-center gap-1 ">
+                    <a class="btn btn-primary"
+                       th:href="@{|/photos/${photo.id}|}"><i
+                            class="  fa-solid fa-circle-info"></i></a>
+                    <a class="btn btn-primary " sec:authorize="hasAuthority('ADMIN')"
+                       th:href="@{|/photos/edit/${photo.id}|}"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
+                    <form th:action="@{|/photos/delete/${photo.id}|}"
+                          method="post">
+                        <button class=" btn btn-danger" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
