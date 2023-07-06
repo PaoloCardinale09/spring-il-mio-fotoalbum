@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -24,10 +25,20 @@ public class PhotoController {
     @Autowired
     PhotoRepository photoRepository;
 
+
     @GetMapping
-    public String list(Model model) {
-        List<Photo> photos = photoRepository.findAll();
-        model.addAttribute("photoList", photos);
+    public String list(
+            @RequestParam(name = "keyword", required = false) String searchingString, Model model) { // è la mappa di attributi che il controller passa alla view
+        List<Photo> photos;
+        if (searchingString == null || searchingString.isBlank()) {
+            photos = photoRepository.findAll();
+        } else {
+            photos = photoRepository.findByTitleContainingIgnoreCase(searchingString);
+        }
+        // passo lista di pizza alla view
+        model.addAttribute("photosList", photos);
+        model.addAttribute("searchInput", searchingString == null ? "" : searchingString);
+        // restituisco il nome del template alla view
         return "/photos/list";
     }
 

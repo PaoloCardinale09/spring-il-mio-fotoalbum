@@ -9,5 +9,5 @@ public interface PhotoRepository extends JpaRepository<Photo, Integer> {
     // metodo per cercare i libri con titolo uguale a quello passato
     List<Photo> findByTitle(String title);
 
-    
+    List<Photo> findByTitleContainingIgnoreCase(String title);
 }
