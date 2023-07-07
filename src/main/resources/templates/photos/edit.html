@@ -62,23 +62,12 @@
 
             </div>
         </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="visible">Visible</label>
+            <input class="form-check-input" type="checkbox" id="visible" th:field="*{visible}">
+        </div>
 
-        <!--        <div class="col-6 mb-3">-->
-        <!--            <label class="form-label" for="visible">Visible</label>-->
-        <!--            <input class="form-control" type="checkbox" id="visible" th:field="*{visible}">-->
 
-        <!--            <div th:if="${#fields.hasErrors('visible')}" class="invalid-feedback">-->
-        <!--                <ul>-->
-        <!--                    <li th:each="err : ${#fields.errors('visible')}" th:text="${err}"></li>-->
-        <!--                </ul>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
-        <!--        <div class="col-12 mb-3">-->
-        <!--            <button class="btn btn-primary" type="submit">save</button>-->
-        <!--            &lt;!&ndash;            add  a button cancel&ndash;&gt;-->
-        <!--            <a th:href="@{/photos}" class="btn btn-primary">cancel</a>-->
-        <!--        </div>-->
         <hr>
 
         <div class="col-4">

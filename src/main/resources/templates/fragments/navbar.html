@@ -14,7 +14,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <!--Faccio append della classe active se sono nell' area corrispondente del link-->
-
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/photos}" th:classappend="${current== 'photos' ? 'active' : ''}">Photos</a>
                 </li>
@@ -22,12 +21,52 @@
                     <a class="nav-link" th:href="@{/categories}"
                        th:classappend="${current== 'categories' ? 'active' : ''}">Categories</a>
                 </li>
-
-
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}" th:classappend="${current== 'logout' ? 'active' : ''}">Logout</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-
 </body>
 </html>
+
+
+<!--<!doctype html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;Fragment della navbar in cui current è il parametro dell' area che sto navigando&ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg bg-light" th:fragment="navbar(current)">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" th:href="@{/photos}">Photos App</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"-->
+<!--                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav">-->
+<!--                &lt;!&ndash;Faccio append della classe active se sono nell' area corrispondente del link&ndash;&gt;-->
+
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/photos}" th:classappend="${current== 'photos' ? 'active' : ''}">Photos</a>-->
+<!--                </li>-->
+<!--                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/categories}"-->
+<!--                       th:classappend="${current== 'categories' ? 'active' : ''}">Categories</a>-->
+<!--                </li>-->
+<!--                <li class="navbar-nav ms-auto">-->
+<!--                    <a class="nav-link" th:href="@{/logout}" th:classappend="${current== 'logout' ? 'active' : ''}">Logout</a>-->
+<!--                </li>-->
+
+
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--</body>-->
+<!--</html>-->

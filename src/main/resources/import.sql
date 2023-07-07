@@ -4,3 +4,9 @@ INSERT INTO `photos` (`id`, `description`, `title`, `url`, `visible`) VALUES (NU
 INSERT INTO `categories` (`id`, `description`, `name`) VALUES (NULL, 'galaxy pics', 'Planet'), (NULL, 'Pics of nature', 'Nature');
 
 INSERT INTO `category_photo` (`photo_id`, `category_id`) VALUES ('1', '1'), ('2', '2');
+
+INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`) VALUES (NULL, 'mariorossi@gmail.com', 'mario', 'rossi', '{noop}ok'), (NULL, 'paolo@gmail.com', 'paolo', 'cardinale', '{noop}ok')
+
+INSERT INTO `roles` (`id`, `name`) VALUES (1, 'ADMIN'), (2, 'USER');
+
+INSERT INTO `users_roles` (`user_id`, `roles_id`) VALUES ('1', '1'), ('2', '2');
