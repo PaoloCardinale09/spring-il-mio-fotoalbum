@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "photos")
 public class Photo {
@@ -11,15 +14,34 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
+    @NotBlank(message = "Title must not be null or blank")
     private String title;
+    @Lob
     @Size(max = 255, message = "The description must be a maximum of 255 characters")
     @NotBlank(message = "Description must not be null or blank")
     private String description;
-    @NotBlank(message = "pics url must not be null or blank")
+    @NotBlank(message = "URL must not be null or blank")
     @Column(length = 1000)
-    @Size(max = 1000, message = "The Url must be a maximum of 1000 characters")
+    @Size(max = 1000, message = "The URL must be a maximum of 1000 characters")
     private String url;
     private Boolean visible;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "category_photo",
+            joinColumns = @JoinColumn(name = "photo_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories = new ArrayList<>();
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public Integer getId() {
         return id;

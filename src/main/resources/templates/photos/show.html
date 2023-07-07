@@ -33,14 +33,16 @@
             </div>
         </div>
 
-        <!--        <div class="col-4">-->
-        <!--            <h3>Ingredients</h3>-->
-        <!--            <ul th:if="*{ingredients.size() > 0}">-->
-        <!--                <li th:each="ingredient : *{ingredients}" th:text="${ingredient.name}"></li>-->
-        <!--            </ul>-->
-        <!--            <div th:unless="*{ingredients.size() > 0}" class="alert alert-info">No ingredients</div>-->
-        <!--        </div>-->
+        <!-- categorie -->
+        <div class="col-4">
+            <h3>Categories</h3>
+            <ul th:if="*{categories.size() > 0}">
+                <li th:each="cat : *{categories}" th:text="${cat.name}"></li>
+            </ul>
+            <div th:unless="*{categories.size() > 0}" class="alert alert-info">No categories</div>
+        </div>
     </section>
+   
 </div>
 </body>
 </html>

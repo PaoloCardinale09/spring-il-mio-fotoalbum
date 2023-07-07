@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="/fragments/resources :: head(pageTitle='Photo Form')">
+
+    <title>Form photo</title>
+</head>
+<!--nel body ho una variabile edit booleana in base se ha id  o no-->
+<body th:with="isEdit=${photo.id !=null}">
+<nav th:replace="~{/fragments/navbar :: navbar(current='photos')}"></nav>
+<div class="container">
+
+    <h1 th:text="${isEdit ? 'Edit Photo' : 'New Photo' }">create new Photo</h1>
+    <hr>
+    <!-- form di creazione-->
+    <form
+            th:with="formAction=${isEdit ? '/photos/edit/' + photo.id : '/photos/create'}"
+            th:action="@{${formAction}}"
+            th:object="${photo}"
+            method="post"
+            id="photo-form"
+            class="row"
+    >
+
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="photo-title">Title*</label>
+            <input class="form-control" type="text" id="photo-title" th:field="*{title}" th:errorClass="is-invalid">
+            <div class="form-text">*Title must not be blank</div>
+
+            <div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+                <ul>
+                    <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-12 mb-3">
+            <label class="form-label" for="photo-description">Description*</label>
+            <textarea class="form-control" type=" text" id="photo-description" th:field="*{description}"
+                      th:errorClass="is-invalid" rows="5">
+            </textarea>
+            <div class="form-text">*Description must not be blank</div>
+
+            <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                <ul>
+                    <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="photo-url">URL</label>
+            <input class="form-control" type="text" id="photo-url" th:field="*{url}" th:errorClass="is-invalid">
+
+            <div th:if="${#fields.hasErrors('url')}" class="invalid-feedback">
+                <ul>
+                    <li th:each="err : ${#fields.errors('url')}" th:text="${err}"></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!--        <div class="col-6 mb-3">-->
+        <!--            <label class="form-label" for="visible">Visible</label>-->
+        <!--            <input class="form-control" type="checkbox" id="visible" th:field="*{visible}">-->
+
+        <!--            <div th:if="${#fields.hasErrors('visible')}" class="invalid-feedback">-->
+        <!--                <ul>-->
+        <!--                    <li th:each="err : ${#fields.errors('visible')}" th:text="${err}"></li>-->
+        <!--                </ul>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        <div class="col-12 mb-3">-->
+        <!--            <button class="btn btn-primary" type="submit">save</button>-->
+        <!--            &lt;!&ndash;            add  a button cancel&ndash;&gt;-->
+        <!--            <a th:href="@{/photos}" class="btn btn-primary">cancel</a>-->
+        <!--        </div>-->
+        <hr>
+
+        <div class="col-4">
+            <h3>Categories</h3>
+            <div class="form-check" th:each="cat : ${categoryList}">
+                <input class="form-check-input" type="checkbox" th:value="${cat.id}" th:id="|cat_${cat.id}|"
+                       th:field="*{categories}">
+                <label class="form-check-label" th:for="|cat_${cat.id}|" th:text="${cat.name}">
+                </label>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a class="btn btn-primary" th:href="@{/photos}">Cancel</a>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
