@@ -10,3 +10,5 @@ INSERT INTO `users` (`id`, `email`, `first_name`, `last_name`, `password`) VALUE
 INSERT INTO `roles` (`id`, `name`) VALUES (1, 'ADMIN'), (2, 'USER');
 
 INSERT INTO `users_roles` (`user_id`, `roles_id`) VALUES ('1', '1'), ('2', '2');
+
+INSERT INTO `messages` (`id`, `email`, `message`) VALUES (NULL, 'alfio09@gmail.com', 'Ciao vorrei avere informazioni'), (NULL, 'poi@hotmail.com', 'Bellissima questa foto');

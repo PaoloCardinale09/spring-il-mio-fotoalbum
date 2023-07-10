@@ -38,7 +38,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Url</th>
-            <th scope="col">Visible</th>
+            <th sec:authorize="hasAuthority('ADMIN')" scope="col">Visible</th>
 
 
             <th></th>
@@ -50,7 +50,7 @@
             <td th:text="${photo.title}"></td>
             <td th:text="${photo.description}"></td>
             <td th:text="${photo.url} "></td>
-            <td th:text="${photo.visible} "></td>
+            <td sec:authorize="hasAuthority('ADMIN')" th:text="${photo.visible} "></td>
             <td>
                 <div class="d-flex align-items-center gap-1 ">
                     <a class="btn btn-primary"

@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/photos").permitAll()
 
                 .requestMatchers("/categories").hasAuthority("ADMIN")
+                .requestMatchers("/messages").hasAuthority("ADMIN")
                 .requestMatchers("/photos/edit/**").hasAuthority("ADMIN")
                 .requestMatchers("/photos/edit/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/photos/**").hasAuthority("ADMIN")
