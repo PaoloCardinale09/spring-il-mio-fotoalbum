@@ -4,8 +4,8 @@
 </head>
 <body>
 <nav th:replace="~{/fragments/navbar :: navbar(current='photos')}"></nav>
-<h1>Photo List</h1>
 <div class="container">
+    <h1>Photo List</h1>
     <!--    per messaggio di avvenuta cancellazione-->
 
     <div th:if="${message != null}" class="alert  alert-dismissible fade show"

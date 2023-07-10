@@ -1,4 +1,4 @@
-package org.lessons.springilmiofotoalbum.controller;
+package org.lessons.springilmiofotoalbum.api;
 
 import jakarta.validation.Valid;
 import org.lessons.springilmiofotoalbum.model.Message;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1/messages")
-public class MessageController {
+public class SendMessageRestController {
     @Autowired
     private MessageRepository messageRepository;
 

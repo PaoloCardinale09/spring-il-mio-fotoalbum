@@ -21,6 +21,10 @@
                     <a class="nav-link" th:href="@{/categories}"
                        th:classappend="${current== 'categories' ? 'active' : ''}">Categories</a>
                 </li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="nav-item">
+                    <a class="nav-link" th:href="@{/messages}"
+                       th:classappend="${current== 'messages' ? 'active' : ''}">Messages</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
