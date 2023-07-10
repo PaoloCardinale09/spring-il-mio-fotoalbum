@@ -32,6 +32,7 @@ public class PhotoController {
 
 
     @GetMapping
+    @CrossOrigin
     public String list(
             @RequestParam(name = "keyword", required = false) String searchingString, Model model) { // è la mappa di attributi che il controller passa alla view
         List<Photo> photos;
